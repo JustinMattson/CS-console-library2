@@ -2,17 +2,17 @@ using console_library2.Enums;
 
 namespace console_library2.Models
 {
-  public partial class Publication
+  public abstract partial class Publication
   {
     public Publication()
     {
     }
 
-    public Publication(string title, string author, PublicationType format)
+    public Publication(string title, string author, bool available, PublicationType format)
     {
       Title = title;
       Author = author;
-      Available = true;
+      Available = available;
       Format = format;
     }
 

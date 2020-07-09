@@ -4,7 +4,7 @@ namespace console_library2.Models
 {
   public class Magazine : Publication
   {
-    public Magazine(string title, string author, PublicationType format, string pubFrequency, int issueId) : base(title, author, format)
+    public Magazine(string title, string author, bool available, PublicationType format, string pubFrequency, int issueId) : base(title, author, available, format)
     {
       PubFrequency = pubFrequency;
       IssueId = issueId;

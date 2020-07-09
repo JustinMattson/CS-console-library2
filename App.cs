@@ -7,6 +7,7 @@ namespace console_library2
   public class App
   {
     public List<string> Messages { get; set; } = new List<string>();
+    public List<string> IEmessages { get; set; } = new List<string>();
     public Library Library { get; set; } = new Library();
     public App()
     {
@@ -27,8 +28,13 @@ namespace console_library2
       while (RunLibrary == true)
       {
         Print();
-        System.Console.WriteLine("What would you like to do?");
-        System.Console.WriteLine("[v]iew Library, E[x]it Library");
+        Print_IE();
+        System.Console.WriteLine("\nWhat would you like to do?");
+        System.Console.WriteLine(@"
+  [V]iew Library
+  [C]heckout Publication
+  [R]eturn Publication 
+  [E]xit Library");
         string option = Console.ReadLine().ToLower();
         switch (option)
         {
@@ -36,12 +42,25 @@ namespace console_library2
           case "view":
             Messages.Add(Library.ViewLibrary());
             break;
+          case "c":
+          case "checkout":
+            Library.Checkout();
+            break;
+          case "r":
+          case "return":
+            Library.Return();
+            break;
           case "q":
           case "quit":
-          case "x":
+          case "e":
           case "exit":
             RunLibrary = false;
             break;
+          default:
+            Console.Clear();
+            IEmessages.Add("Invalid Selection");
+            break;
+
         }
       }
     }
@@ -53,6 +72,16 @@ namespace console_library2
         System.Console.WriteLine(m);
       }
       Messages.Clear();
+    }
+    private void Print_IE()
+    {
+      foreach (string m in IEmessages)
+      {
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        System.Console.WriteLine(m);
+        Console.ForegroundColor = ConsoleColor.White;
+      }
+      IEmessages.Clear();
     }
   }
 }

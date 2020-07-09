@@ -5,7 +5,7 @@ namespace console_library2.Models
 {
   public class Book : Publication, IElectronic
   {
-    public Book(string title, string author, PublicationType format, int numPages, string binding, BookClassification classification, bool downloadable, int maxDownloads) : base(title, author, format)
+    public Book(string title, string author, bool available, PublicationType format, int numPages, string binding, BookClassification classification, bool downloadable, int maxDownloads) : base(title, author, available, format)
     {
       NumPages = numPages;
       Binding = binding;
